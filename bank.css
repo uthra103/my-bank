@@ -1,0 +1,66 @@
+.navbar .navbut {
+  margin-left: 800px;
+  margin-top: -27px;
+
+}
+
+.navbar .navbut button {
+  background-color: white;
+  border: none;
+  color: rgb(40, 127, 221);
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+.navbar .navbut button:hover {
+  border: 2px solid rgb(40, 127, 221);
+}
+
+/* .bannr */
+.welcome {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 2px #000000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(0, 0, 0, 0.804);
+}
+
+body {
+  background: url(https://img.freepik.com/premium-photo/three-stacked-bank-cards-dark-background_1219282-1018.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2 {
+  color: white;
+}
+
+.deposit {
+  border: 2px solid white;
+  width: 500px;
+  margin-left: 200px;
+  padding: 30px;
+}
+
+.withdraw {
+  border: 2px solid white;
+  width: 500px;
+  padding: 30px;
+  margin-left: 110px;
+  margin-top: 30px;
+}
+
+input {
+  width: 400px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.deposit button,
+.withdraw button {
+  width: 100px;
+  border-radius: 10px;
+}

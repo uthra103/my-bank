@@ -1,0 +1,32 @@
+.navbar .navbut {
+  margin-left: 800px;
+  margin-top: -27px;
+
+}
+
+.row .col .bannertext {
+  text-align: justify;
+  margin: 40px;
+}
+
+.row .col .bannerbut {
+  margin-left: 40px;
+  margin-top: -40px;
+  padding: 5px;
+  background-color: rgb(40, 127, 221);
+  color: white;
+  border-radius: 10px;
+}
+
+.navbar .navbut button {
+  background-color: white;
+  border: none;
+  color: rgb(40, 127, 221);
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 15px;
+}
+
+.navbar .navbut button:hover {
+  border: 2px solid rgb(40, 127, 221);
+}

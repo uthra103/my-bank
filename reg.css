@@ -1,0 +1,25 @@
+.reg {
+  background-color: rgba(235, 249, 255, 0.438);
+  border-radius: 15px;
+  box-shadow: 5px 10px 18px #888888;
+  height: 500px;
+  margin-top: 100px;
+  width: 350px;
+  margin-left: 60px;
+}
+
+img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background-color: #ffffff;
+  border: 2px solid #888888;
+}
+
+input {
+  width: 250px;
+  padding: 5px;
+  border-radius: 15px;
+  border: 1px solid rgb(216, 215, 215);
+  box-shadow: 2px 2px 2px 2px #888888;
+}
