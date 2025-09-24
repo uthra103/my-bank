@@ -23,3 +23,9 @@ input {
   border: 1px solid rgb(216, 215, 215);
   box-shadow: 2px 2px 2px 2px #888888;
 }
+
+body {
+  background: url(https://img.freepik.com/premium-photo/three-stacked-bank-cards-dark-background_1219282-1018.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

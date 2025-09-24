@@ -1,57 +1,80 @@
+
+
+// Logout
 function logout() {
-      window.location.href = "./login.html";
-      localStorage.removeItem("currentac");
-      localStorage.removeItem("currentuser");
-    
-      alert("Logout success");
-    }
+  localStorage.removeItem("currentac");
+  localStorage.removeItem("currentuser");
+  alert("Logout success");
+  window.location.href = "./index.html";
+}
 
-    function deposit() {
-      let acname = sessionStorage.getItem("currentac");
-      let amount = Number(document.getElementById("depositAmount").value);
-      let accInput = document.getElementById("depositAccount").value;
+// Deposit
+function deposit() {
+  let acname = localStorage.getItem("currentac");
+  let amount = Number(document.getElementById("depositAmount").value);
+  let accInput = document.getElementById("depositAccount").value.trim();
 
-      // fetch account from localStorage
-      let storeddata = JSON.parse(localStorage.getItem(acname));
+  let storeddata = JSON.parse(localStorage.getItem(acname));
 
-      if (accInput !== acname) {
-        alert("Invalid account number");
-        return;
-      }
+  if (!storeddata) {
+    alert("Account not found. Please login again.");
+    return;
+  }
 
-      if (amount <= 0) {
-        alert("Invalid amount");
-      } else {
-        storeddata.balance += amount;
-        localStorage.setItem(acname, JSON.stringify(storeddata));
-        alert("Your account is credited with " + amount + ". New balance is " + storeddata.balance);
-        document.getElementById("depositAmount").value = "";
-        document.getElementById("depositAccount").value = "";
-      }
-    }
+  if (accInput !== acname) {
+    alert("Invalid account number");
+    return;
+  }
 
-    function withdraw() {
-      let acname = sessionStorage.getItem("currentac");
-      let amount = Number(document.getElementById("withdrawAmount").value);
-      let accInput = document.getElementById("withdrawAccount").value;
+  if (isNaN(amount) || amount <= 0) {
+    alert("Invalid amount");
+    return;
+  }
 
-      // fetch account from localStorage
-      let storeddata = JSON.parse(localStorage.getItem(acname));
+  // ensure numeric balance
+  storeddata.balance = Number(storeddata.balance) + amount;
 
-      if (accInput !== acname) {
-        alert("Invalid account number");
-        return;
-      }
+  localStorage.setItem(acname, JSON.stringify(storeddata));
+  alert(`Your account is credited with ${amount}. New balance is ${storeddata.balance}`);
 
-      if (amount <= 0) {
-        alert("Invalid amount");
-      } else if (amount > storeddata.balance) {
-        alert("Insufficient balance");
-      } else {
-        storeddata.balance -= amount;
-        localStorage.setItem(acname, JSON.stringify(storeddata));
-        alert("Your account is debited with " + amount + ". New balance is " + storeddata.balance);
-        document.getElementById("withdrawAmount").value = "";
-        document.getElementById("withdrawAccount").value = "";
-      }
-    }
+  document.getElementById("depositAmount").value = "";
+  document.getElementById("depositAccount").value = "";
+}
+
+// Withdraw
+function withdraw() {
+  let acname = localStorage.getItem("currentac");
+  let amount = Number(document.getElementById("withdrawAmount").value);
+  let accInput = document.getElementById("withdrawAccount").value.trim();
+
+  let storeddata = JSON.parse(localStorage.getItem(acname));
+
+  if (!storeddata) {
+    alert("Account not found. Please login again.");
+    return;
+  }
+
+  if (accInput !== acname) {
+    alert("Invalid account number");
+    return;
+  }
+
+  if (isNaN(amount) || amount <= 0) {
+    alert("Invalid amount");
+    return;
+  }
+
+  if (amount > Number(storeddata.balance)) {
+    alert("Insufficient balance");
+    return;
+  }
+
+  // ensure numeric balance
+  storeddata.balance = Number(storeddata.balance) - amount;
+
+  localStorage.setItem(acname, JSON.stringify(storeddata));
+  alert(`Your account is debited with ${amount}. New balance is ${storeddata.balance}`);
+
+  document.getElementById("withdrawAmount").value = "";
+  document.getElementById("withdrawAccount").value = "";
+}

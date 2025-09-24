@@ -1,32 +1,26 @@
 function register(){
   let username=document.getElementById('user').value
-  let acname=document.getElementById('acname').value
-  let password=document.getElementById('pass').value
-
-  registerobj={
+  let acnum=document.getElementById('acnum').value
+  let password=document.getElementById('password').value
+   if (!username || !acnum || !password) {
+    alert("All fields are required");
+    return;
+   }
+  let registerobj={
     username:username,
-    accountname:acname,
-    password:password
-  }
- localStorage.setItem(acname, JSON.stringify(registerobj));
-  alert=("acount registerd completed")
+    accountnumber:acnum,
+    password:password,
+    balance: 0 
+  } 
+
+ if (localStorage.getItem(acnum)) {
+    alert("Account number already registered!");
+    return;
+  } 
+  
+  localStorage.setItem(acnum, JSON.stringify(registerobj));
+  alert("acount registerd completed");
+  
 }
 
-function login(){
-  let acname=document.getElementById('acname').value
-  let password=document.getElementById('pass').value
-  let storeddata=JSON.parse(localStorage.getItem(acname))
-  if(storeddata==null){
-    alert("invalid acount")
-  }
-  else if(storeddata.password!=password){
-    alert("invalid password")
-  }
-  else{
-    alert("login success")
-    window.location.href="bank.html"
-    sessionStorage.setItem("currentac",acname)
-    sessionStorage.setItem("currentuser",storeddata.username)
-    console.log(storeddata);
-  }
-}
+
